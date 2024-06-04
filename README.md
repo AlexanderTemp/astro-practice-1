@@ -1,6 +1,6 @@
 ## Landing Page Replication
 
-<video src="./img/dribble.mp4" controls >
+<!-- <video src="./img/dribble.mp4" controls > -->
 
 ### ⚒️ Tools
 
