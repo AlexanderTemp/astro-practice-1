@@ -1,8 +1,13 @@
 ---
 import Button from "./Button.astro";
+import ScreenCard from "./ScreenCard.astro";
+import LucideMonitor from "../icons/LucideMonitor.astro";
+import BothArrows from "../icons/BothArrows.astro";
+import LucideCloudy from "../icons/LucideCloudy.astro";
+import PackageCard from "./PackageCard.astro";
 ---
 
-<div class="flex flex-col items-center gap-7 my-16">
+<div class="relative flex flex-col items-center gap-7 my-16">
   <Button size="small" text="Introduce Cloud Platforms" color="bordered" />
   <div
     class="w-[40%] flex flex-col gap-4 text-center text-5xl antialiased font-normal"
@@ -21,5 +26,93 @@ import Button from "./Button.astro";
   <div class="flex gap-4">
     <Button text="Create Your Virries" />
     <Button text="See Video Demo" color="simple" />
+  </div>
+
+  <div class="absolute -bottom-[360px]">
+    <div class="flex gap-6 justify-center">
+      <ScreenCard>
+        <div
+          class="w-80 flex flex-col gap-5 py-8 justify-center items-center bg-gradient-to-t from-[#e9e8f0] rounded-xl to-white"
+        >
+          <div class="relative flex gap-2 items-center z-20">
+            <div class="p-2 bg-white border border-gray-300 rounded-md">
+              <LucideMonitor />
+            </div>
+            <BothArrows size={12} />
+            <div class="p-2 rounded-md bg-[#7969E6]">
+              <LucideCloudy color="#fff" />
+            </div>
+
+            <div
+              class="absolute w-full flex justify-center items-center -top-5 -z-10"
+            >
+              <div
+                class="rounded-full w-20 h-20 bg-gradient-to-b from-[#9b90fc46] to-[#ffffff00]"
+              >
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-3 text-center">
+            <h2 class="text-md font-medium text-gray-900">
+              Welcome to Virries
+            </h2>
+            <div class="flex flex-col text-xs text-gray-500 gap-1">
+              <p>With Virries desktop, you can connect to</p>
+              <p>your cloud computer</p>
+            </div>
+            <div>
+              <Button size="small" text="Connect" color="simple" />
+            </div>
+          </div>
+        </div>
+      </ScreenCard>
+      <ScreenCard
+        ><div class="w-[440px] flex flex-col gap-4">
+          <div
+            class="pb-4 pt-2 flex items-center justify-between border-b border-gray-300"
+          >
+            <h3 class="font-semibold text-lg text-[#7969e6]">Virries</h3>
+            <div class="p-2 border border-gray-300 rounded-md pr-12">
+              <p class="text-xs text-gray-400">
+                Search by resource name or public IP.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-medium">
+              Which Performance would You like to use this time?
+            </h4>
+          </div>
+          <div class="flex gap-3">
+            <PackageCard
+              packageType="small"
+              data={{
+                gpu: 16,
+                processor: 4,
+                ram: 16,
+              }}
+            />
+            <PackageCard
+              packageType="medium"
+              data={{
+                gpu: 16,
+                processor: 16,
+                ram: 64,
+              }}
+            />
+            <PackageCard
+              packageType="large"
+              data={{
+                gpu: "4x16",
+                processor: 48,
+                ram: 192,
+              }}
+            />
+          </div>
+        </div>
+      </ScreenCard>
+    </div>
   </div>
 </div>

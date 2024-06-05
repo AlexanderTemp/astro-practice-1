@@ -1,0 +1,113 @@
+---
+import LucideMemoryStick from "../icons/LucideMemoryStick.astro";
+import LucideMonitorPlay from "../icons/LucideMonitorPlay.astro";
+import LucideProcessor from "../icons/LucideProcessor.astro";
+
+interface Props {
+  packageType: "small" | "medium" | "large";
+  data: {
+    processor: number;
+    gpu: number | string;
+    ram: number;
+  };
+}
+
+const { packageType, data } = Astro.props;
+---
+
+<div
+  class={`w-42 rounded-xl p-5 flex flex-col h-56 justify-between ${packageType === "small" && "bg-[#6897E6]"} ${packageType === "medium" && "bg-[#7868E6]"} ${packageType === "large" && "bg-[#120B42]"}`}
+>
+  <div
+    class={`flex p-4 w-fit rounded-md justify-center items-center ${packageType === "small" && "bg-[#86ACEB]"} ${packageType === "medium" && "bg-[#9386EB]"} ${packageType === "large" && "bg-[#413C68]"}`}
+  >
+    {packageType === "small" && <div class="w-3 h-3 bg-white rounded-full" />}
+
+    {
+      packageType === "medium" && (
+        <div class="flex justify-center items-center">
+          <span class="two-ballons" />
+        </div>
+      )
+    }
+
+    {
+      packageType === "large" && (
+        <div class="flex justify-center items-center">
+          <span class="three-ballons" />
+        </div>
+      )
+    }
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <h4 class="text-semibold text-sm text-white">
+      {packageType === "small" && "Small"}
+      {packageType === "medium" && "Medium"}
+      {packageType === "large" && "Large"}
+      &nbsp;package
+    </h4>
+
+    <div class="flex gap-2 flex-col">
+      <div class="flex justify-between text-white">
+        <div class="flex gap-1 items-center">
+          <LucideProcessor size={13} color="#CBD5E1" />
+          <p class="text-xs text-slate-300">Processor:</p>
+        </div>
+        <p class="text-sm">{data.processor}&nbsp;Cores</p>
+      </div>
+      <div class="flex justify-between text-white">
+        <div class="flex gap-1 items-center">
+          <LucideMonitorPlay size={13} color="#CBD5E1" />
+          <p class="text-xs text-slate-300">GPU:</p>
+        </div>
+        <p class="text-sm">{data.gpu}&nbsp;GB</p>
+      </div>
+
+      <div class="flex justify-between text-white">
+        <div class="flex gap-1 items-center">
+          <LucideMemoryStick size={13} color="#CBD5E1" />
+          <p class="text-xs text-slate-300">RAM:</p>
+        </div>
+        <p class="text-sm">{data.ram}&nbsp;GB</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .two-balloons {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 70px;
+  }
+
+  .two-balloons::before,
+  .two-balloons::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 70px;
+    background-color: red;
+    border-radius: 50% 50% 50% 50%;
+    top: 0;
+  }
+
+  .two-balloons::after {
+    left: 60px;
+    background-color: blue;
+  }
+
+  .two-balloons::before::after,
+  .two-balloons::after::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 60px;
+    background-color: gray;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+</style>
